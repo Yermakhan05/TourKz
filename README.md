@@ -1,11 +1,11 @@
 # Tourkz
 
 # Demo images
-<div style="column-count: 3; column-gap: 8px;">
-  <img src="demo/html%20file.png" alt="" style="width:100%; display:block; margin-bottom:8px; object-fit:cover; height:180px; border-radius:6px;">
-  <img src="demo/ts%20file.png" alt="" style="width:100%; display:block; margin-bottom:8px; object-fit:cover; height:120px; border-radius:6px;">
-  <img src="demo/localhost_4200_.png" alt="" style="width:100%; display:block; margin-bottom:8px; object-fit:cover; height:220px; border-radius:6px;">
-  <img src="demo/localhost_4200_%20(2).png" alt="" style="width:100%; display:block; margin-bottom:8px; object-fit:cover; height:140px; border-radius:6px;">
+<div style="column-count: 2; column-gap: 8px;">
+  <img src="demo/html%20file.png" alt="" style="width:50%; display:block; margin-bottom:8px; object-fit:cover; height:500px;">
+  <img src="demo/ts%20file.png" alt="" style="width:50%; display:block; margin-bottom:8px; object-fit:cover; height:500px;">
+  <img src="demo/localhost_4200_.png" alt="" style="width:50%; display:block; margin-bottom:8px; object-fit:cover; height:500px; ">
+  <img src="demo/localhost_4200_%20(2).png" alt="" style="width:50%; display:block; margin-bottom:8px; object-fit:cover; height:500px;">
 </div>
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.3.
