@@ -8,8 +8,8 @@
   <div class="advantages">
     <div class="why-us">
       <div class="title_why_us">
-        <h2>Why Us?</h2>
-        <p class="subtitle">These popular destinations have something to offer</p>
+        <h2>{{title}}</h2>
+        <p class="subtitle">{{mission}}</p>
       </div>
       <div class="features">
         <div class="feature">
@@ -33,8 +33,8 @@
   <div class="about_agency">
     <div class="visa-section">
       <div class="images-container">
-        <img src="assets/WhatsApp%20Image%202025-02-25%20at%2013.25.17.jpeg" alt="Пагода" class="image image-left">
-        <img src="assets/WhatsApp%20Image%202025-02-25%20at%2013.25.16.jpeg" alt="Круизный лайнер" class="image image-center">
+        <img src="assets/img1.jpg" alt="Пагода" class="image image-left">
+        <img src="assets/img2.jpg" alt="Круизный лайнер" class="image image-center">
         <video #videoElement class="image image-right" controls autoplay muted loop poster="assets/4812203-hd_1080_1920_30fps.mp4" playsinline preload="auto">
           <source src="assets/4812203-hd_1080_1920_30fps.mp4">
           Ваш браузер не поддерживает видео.
@@ -47,5 +47,40 @@
       </div>
     </div>
   </div>
+</div>
+
+<button class="open-modal-btn" (click)="openModal()">Open the form</button>
+
+<!-- Модальное окно -->
+<div class="modal" *ngIf="isModalOpen">
+    <div class="modal-content">
+        <span class="close" (click)="closeModal()">&times;</span>
+        <h2>Interactive form</h2>
+
+        <!-- Лайки -->
+        <div class="form-section">
+            <button class="like-btn" (click)="like()">I like</button>
+            <span>likes: {{ likes }}</span>
+        </div>
+
+        <!-- Показать/скрыть сообщение -->
+        <div class="form-section">
+            <button class="toggle-btn" (click)="toggleMessage()">Show/ hide message</button>
+            <p *ngIf="messageVisible" class="message">Thank you for visiting!</p>
+        </div>
+
+        <!-- Ввод имени -->
+        <div class="form-section">
+            <input [(ngModel)]="name" placeholder="Enter your name" class="input-field">
+            <p *ngIf="name" class="preview">Hi, {{ name }}!</p>
+        </div>
+
+        <!-- Ввод email -->
+        <div class="form-section">
+            <input [(ngModel)]="email" placeholder="Enter your email address" class="input-field">
+            <button class="subscribe-btn" (click)="subscribe()">Subscribe</button>
+            <p *ngIf="subscribed" class="subscribed">Thanks, {{ email }}, We'll be in touch!</p>
+        </div>
+    </div>
 </div>
 
