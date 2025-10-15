@@ -1,8 +1,11 @@
 <div class="container">
     <h2>🌍 Country List</h2>
-    <button (click)="loadCountries()" [disabled]="isLoading">
-        {{ isLoading ? 'Loading...' : 'Load Countries' }}
-    </button>
+    <input
+            type="search"
+            placeholder="Search country..."
+            (input)="searchResult($event.target.value)"
+            class="search-box"
+    />
 
     <ul *ngIf="countries.length > 0" class="country-list">
         <li *ngFor="let country of countries" class="country-item">
