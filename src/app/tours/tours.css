@@ -1,69 +1,99 @@
-.container {
+.country-page {
+    font-family: 'Poppins', sans-serif;
+    margin-top: -80px;
+    padding: 40px 10%;
+    min-height: 100vh;
+    color: #333;
+}
+
+.header {
     text-align: center;
-    padding: 20px;
-    max-width: 600px;
-    margin: 0 auto;
+    margin-bottom: 40px;
 }
 
-button {
-    background-color: #007bff;
-    color: white;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-bottom: 20px;
+.header h1 {
+    font-size: 36px;
+    color: #2c3e50;
+    margin-bottom: 10px;
 }
 
-button:hover {
-    background-color: #0056b3;
+.subtitle {
+    color: #6d6523;
+    font-size: 18px;
 }
 
-.country-list {
-    list-style: none;
-    padding: 0;
-}
-
-.country-item {
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    background-color: #f5f5f5;
-    border: 1px solid #ddd;
-    margin-bottom: 8px;
-    padding: 8px;
-    border-radius: 6px;
-}
-
-.flag {
-    width: 40px;
-    height: 25px;
+.logo-img{
+    height: 50px;
+    width: auto;
     margin-right: 10px;
-    border: 1px solid #ccc;
+}
+
+.search-section {
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 .search-box {
+    width: 60%;
+    max-width: 400px;
+    padding: 12px 16px;
+    border: 2px solid #9a8f5d;
+    border-radius: 25px;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.search-box:focus {
+    border-color: #6d6523;
+    box-shadow: 0 0 6px rgba(109, 101, 35, 0.3);
+}
+
+.country-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+.country-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    width: 220px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.country-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.flag {
     width: 100%;
-    max-width: 300px;
-    padding: 8px 12px;
-    margin-bottom: 16px;
-    border: 1px solid #ccc;
+    height: 120px;
+    object-fit: cover;
     border-radius: 8px;
+    margin-bottom: 12px;
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
+.country-info h3 {
+    font-size: 18px;
+    color: #2c3e50;
+    margin-bottom: 5px;
 }
 
-li {
-    background: #f8f8f8;
-    padding: 10px;
-    margin: 4px 0;
-    border-radius: 6px;
-    transition: 0.2s;
+.country-info p {
+    font-size: 14px;
+    color: #6d6523;
 }
 
-li:hover {
-    background: #e0e0e0;
+.no-result {
+    text-align: center;
+    color: #888;
+    font-size: 18px;
+    margin-top: 50px;
 }

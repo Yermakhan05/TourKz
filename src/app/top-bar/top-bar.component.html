@@ -1,0 +1,134 @@
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="first-bar">
+      <div class="logo-container">
+        <img src="/assets/logoTour.png" alt="">
+        <img src="/assets/menu.png" class="menu-button" alt="Menu" (click)="toggleMenu()">
+        <div class="nav-links" [ngClass]="{ 'active': isMenuOpen }">
+          <a routerLink="/main" class="nav-link" (click)="toggleMenu()">Home</a>
+          <a class="nav-link" routerLink="/tours" (click)="toggleMenu()">Tours</a>
+          <a class="nav-link" routerLink="/contacts" (click)="toggleMenu()">Contacts</a>
+        </div>
+      </div>
+    </div>
+    <div class="second-bar" *ngIf="!isSecondBarPage()">
+      <div class="social-media">
+        <div [ngClass]="{ 'hidden-contacts': isContactPage() }" class="contacts">
+          <div class="social-icons">
+            <a href="#" target="_blank" rel="noreferrer">
+              <img src="/assets/telegram.9e41b085.svg" alt="">
+            </a>
+            <a href="#" target="_blank" rel="noreferrer">
+              <img src="/assets/whatsapp.a4e76175.svg" alt="">
+            </a>
+            <a href="#" target="_blank" rel="noreferrer">
+              <img src="/assets/instagram.a1e35907.svg" alt="">
+            </a>
+          </div>
+          <div class="contact-info">
+            <div class="cont">
+              <img src="/assets/phone.200fe855.svg" alt="">
+              <div class="location-input">
+                <div class="city"> +7 776 224 6936</div>
+              </div>
+            </div>
+            <div class="cont">
+              <img src="/assets/location.8d2d075d.svg" alt="">
+              <div class="location-input">
+                <div class="city">Almaty</div>
+              </div>
+            </div>
+            <div class="call-button" (click)="isForm = !isForm">
+              <div class="call-button-in">
+                <div style="margin-top: 7px;">
+                    Booking a call
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-body" *ngIf="isForm">
+    <div class="modal">
+        <div class="modal-content">
+
+            <!-- (3) Event binding -->
+            <button (click)="isForm = !isForm" class="close-btn">&times;</button>
+
+            <h2 class="modal-title">Tour Selection Application</h2>
+
+            <form class="tour-form" #formRef="ngForm" (ngSubmit)="submitForm(formRef)">
+
+                <!-- (4) Two-way binding -->
+                <div class="form-group">
+                    <input
+                            type="text"
+                            class="form-input"
+                            placeholder="Your name *"
+                            [(ngModel)]="name"
+                            name="name"
+                            #nameRef="ngModel"
+                            required>
+                    <span *ngIf="nameRef.invalid && nameRef.touched" class="error-text">
+            Имя обязательно!
+          </span>
+                </div>
+                <!-- (1) Interpolation -->
+                <div class="preview" *ngIf="name">
+                    <p><strong>Hello, </strong> {{ name }}!</p>
+                </div>
+
+                <div class="form-group">
+                    <input
+                            type="email"
+                            class="form-input"
+                            placeholder="Email"
+                            [(ngModel)]="email"
+                            name="email"
+                            #emailRef="ngModel"
+                            required
+                            email>
+                    <span *ngIf="emailRef.invalid && emailRef.touched" class="error-text">
+            Введите корректный email!
+          </span>
+                </div>
+
+                <div class="form-group phone-group">
+                    <div class="phone-input">
+                        <span class="flag-icon">🇰🇿</span>
+                        <span class="phone-prefix">+7</span>
+                        <input
+                                type="tel"
+                                class="form-input phone-number"
+                                placeholder="(000) 000-0000"
+                                [(ngModel)]="phone"
+                                name="phone"
+                                #phoneRef="ngModel"
+                                required>
+                        <span *ngIf="phoneRef.invalid && phoneRef.touched" class="error-text">
+              Телефон обязателен!
+            </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+          <textarea
+                  class="form-input textarea"
+                  placeholder="Comment"
+                  [(ngModel)]="comment"
+                  name="comment">
+          </textarea>
+                </div>
+
+                <!-- (2) Property binding -->
+                <button type="submit" class="submit-btn" [disabled]="formRef.invalid">
+                    Submit
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

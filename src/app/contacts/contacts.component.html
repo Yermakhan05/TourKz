@@ -1,0 +1,44 @@
+<div class="contact-page">
+
+  <header class="header">
+    <h1 class="header-title">Contacts</h1>
+  </header>
+
+  <section class="contact-section">
+    <div class="form-container">
+      <form class="contact-form" #formRef="ngForm" (ngSubmit)="submitForm(formRef)">
+        <div class="form-row">
+          <input type="text" placeholder="Name" class="input-field" [(ngModel)]="name" name="name" #nameRef="ngModel" required>
+          <span *ngIf="nameRef.invalid && nameRef.touched" class="error-text" style="color: red">*</span>
+          <input type="email" placeholder="Email" class="input-field" [(ngModel)]="email" name="email" #emailRef="ngModel" required>
+          <span *ngIf="emailRef.invalid && emailRef.touched" class="error-text" style="color: red">*</span>
+
+        </div>
+        <input type="tel" placeholder="Phone" class="input-field full-width" [(ngModel)]="phone" name="phone" #phoneRef="ngModel" required>
+        <span *ngIf="phoneRef.invalid && phoneRef.touched" class="error-text" style="color: red">*</span>
+
+        <textarea placeholder="Comment" class="input-field textarea-field" [(ngModel)]="comment" name="comment"></textarea>
+        <button type="submit" class="submit-button">Submit</button>
+      </form>
+
+      <div class="contact-info">
+        <div class="Footer_Item">
+          <img src="/assets/email.79f1928b.svg" alt="Email">
+          <p class="email">traveltrialgmail.com</p>
+        </div>
+        <div class="Footer_Item">
+          <img src="/assets/phone.200fe855.svg" alt="Phone">
+          <p class="phone">+7 776 224 69 36</p>
+        </div>
+
+        <p class="social-text">Social networks:</p>
+        <div class="social-icons">
+          <a href="#" class="social-icon"><img src="assets/img_15.png"></a>
+          <a href="#" class="social-icon"><img src="assets/img_16.png"></a>
+          <a href="#" class="social-icon"><img src="assets/img_17.png"></a>
+          <a href="#" class="social-icon"><img style="margin-right: -1px; margin-bottom: 1px" src="assets/img_18.png"></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

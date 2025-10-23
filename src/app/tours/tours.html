@@ -1,16 +1,32 @@
-<div class="container">
-    <h2>🌍 Country List</h2>
-    <input
-            type="search"
-            placeholder="Search country..."
-            (input)="searchResult($event.target.value)"
-            class="search-box"
-    />
+<div class="country-page">
+    <div class="header">
+        <div style="display: flex; flex-direction: row; align-items: center; justify-content: center">
+            <img class="logo-img" src="assets/tours.png">
+            <h1>Explore Our Destinations</h1>
+        </div>
+        <p class="subtitle">Discover countries where unforgettable tours await you!</p>
+    </div>
 
-    <ul *ngIf="countries.length > 0" class="country-list">
-        <li *ngFor="let country of countries" class="country-item">
+    <div class="search-section">
+        <input
+                type="search"
+                placeholder="🔍 Search for a country..."
+                (input)="searchResult($event.target.value)"
+                class="search-box"
+        />
+    </div>
+
+    <div *ngIf="countries.length > 0; else noResult" class="country-list">
+        <div *ngFor="let country of countries" class="country-card">
             <img [src]="country.flags.svg" [alt]="country.name.common" class="flag" />
-            <span>{{ country.name.common }}</span>
-        </li>
-    </ul>
+            <div class="country-info">
+                <h3>{{ country.name.common }}</h3>
+                <p>Click to explore tours in {{ country.name.common }}</p>
+            </div>
+        </div>
+    </div>
+
+    <ng-template #noResult>
+        <p class="no-result">😕 No countries found. Try another search.</p>
+    </ng-template>
 </div>

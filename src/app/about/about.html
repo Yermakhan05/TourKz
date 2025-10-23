@@ -49,38 +49,5 @@
   </div>
 </div>
 
-<button class="open-modal-btn" (click)="openModal()">Open the form</button>
 
-<!-- Модальное окно -->
-<div class="modal" *ngIf="isModalOpen">
-    <div class="modal-content">
-        <span class="close" (click)="closeModal()">&times;</span>
-        <h2>Interactive form</h2>
-
-        <!-- Лайки -->
-        <div class="form-section">
-            <button class="like-btn" (click)="like()">I like</button>
-            <span>likes: {{ likes }}</span>
-        </div>
-
-        <!-- Показать/скрыть сообщение -->
-        <div class="form-section">
-            <button class="toggle-btn" (click)="toggleMessage()">Show/ hide message</button>
-            <p *ngIf="messageVisible" class="message">Thank you for visiting!</p>
-        </div>
-
-        <!-- Ввод имени -->
-        <div class="form-section">
-            <input [(ngModel)]="name" placeholder="Enter your name" class="input-field">
-            <p *ngIf="name" class="preview">Hi, {{ name }}!</p>
-        </div>
-
-        <!-- Ввод email -->
-        <div class="form-section">
-            <input [(ngModel)]="email" placeholder="Enter your email address" class="input-field">
-            <button class="subscribe-btn" (click)="subscribe()">Subscribe</button>
-            <p *ngIf="subscribed" class="subscribed">Thanks, {{ email }}, We'll be in touch!</p>
-        </div>
-    </div>
-</div>
 
