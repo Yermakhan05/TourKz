@@ -1,7 +1,7 @@
 <div class="country-page">
     <div class="header">
         <div style="display: flex; flex-direction: row; align-items: center; justify-content: center">
-            <img class="logo-img" src="assets/tours.png">
+            <img class="logo-img" src="./assets/tours.png">
             <h1>Explore Our Destinations</h1>
         </div>
         <p class="subtitle">Discover countries where unforgettable tours await you!</p>
@@ -21,7 +21,7 @@
             <img [src]="country.flags.svg" [alt]="country.name.common" class="flag" />
             <div class="country-info">
                 <h3>{{ country.name.common }}</h3>
-                <p>Click to explore tours in {{ country.name.common }}</p>
+                <a style="color: black;" [routerLink]="['/tours', country.cca3]">Click to explore tours in {{ country.name.common }}</a>
             </div>
         </div>
     </div>

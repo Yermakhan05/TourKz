@@ -1,14 +1,16 @@
 import {Component, OnInit} from '@angular/core';
-import {AsyncPipe, NgClass, NgIf} from '@angular/common';
-import {NavigationEnd, Router, RouterLink} from '@angular/router';
+import {NgClass, NgIf} from '@angular/common';
+import {NavigationEnd, Router, RouterLink, RouterLinkActive} from '@angular/router';
 import {FormsModule} from '@angular/forms';
+import {UserFormService} from "../services/user-form.service";
 @Component({
   selector: 'app-top-bar',
   imports: [
     NgClass,
     NgIf,
     RouterLink,
-    FormsModule
+    FormsModule,
+    RouterLinkActive
   ],
   templateUrl: './top-bar.component.html',
   standalone: true,
@@ -27,12 +29,21 @@ export class TopBarComponent implements OnInit{
       alert('Заполните все обязательные поля!');
       return;
     }
+    const formData = {
+      name: this.name,
+      email: this.email,
+      phone: this.phone,
+      comment: this.comment,
+      status: 'pending'
+    };
 
-
-    if (form.valid) {
-        alert(`Form submitted successfully!\nName: ${this.name}\nEmail: ${this.email}`);
-        form.resetForm();
-    }
+    this.userFormService.submitForm(formData).subscribe({
+      next: (response) => {
+        alert(response.message);
+        this.isForm = false
+      },
+      error: (error) => console.error('Ошибка:', error)
+    });
   }
 
   ngOnInit(): void {
@@ -43,11 +54,10 @@ export class TopBarComponent implements OnInit{
     });
   }
 
-  constructor(
+  constructor(private userFormService: UserFormService,
     private router: Router,
   ) {
   }
-
 
 
   toggleMenu() {
@@ -60,6 +70,6 @@ export class TopBarComponent implements OnInit{
   }
 
   isSecondBarPage() {
-    return this.router.url === '/tours';
+    return this.router.url === '/tours' || this.router.url === '/login';
   }
 }

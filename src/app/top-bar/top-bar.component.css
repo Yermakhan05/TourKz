@@ -90,6 +90,11 @@
   gap: 20px;
 }
 
+.nav-link.active {
+  color: #ffdd40;   /* золотой как hover */
+  border-bottom: 2px solid #ffdd40;  /* или линия снизу */
+}
+
 .cont {
   display: flex;
   align-items: center;

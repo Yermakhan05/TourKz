@@ -23,38 +23,7 @@ export class About implements OnInit, OnDestroy {
   title = 'Why Us?';
   mission = 'These popular destinations have something to offer';
 
-  // 2. Property binding
-  isButtonDisabled = false;
-  likes = 0;
 
-  // 3. Event binding
-  messageVisible = false;
-
-  toggleMessage() {
-    this.messageVisible = !this.messageVisible;
-  }
-
-  like() {
-    this.likes++;
-  }
-
-  // 4. Two-way binding
-  name = '';
-  email = '';
-  subscribed = false;
-  isModalOpen = false;
-
-  openModal() {
-    this.isModalOpen = true;
-  }
-  closeModal() {
-    this.isModalOpen = false;
-  }
-  subscribe() {
-    if (this.email) {
-      this.subscribed = true;
-    }
-  }
   ngOnInit() {}
 
   constructor() {

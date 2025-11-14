@@ -4,18 +4,18 @@ import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {Country} from "../models";
 import {debounceTime, Subject, switchMap} from "rxjs";
+import {RouterLink} from "@angular/router";
 
 
 @Component({
   selector: 'app-tours',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './tours.html',
   standalone: true,
   styleUrl: './tours.css'
 })
 export class Tours implements OnInit{
   countries: Country[] = [];
-  isLoading = false;
   private searchSubject = new Subject<string>();
 
   constructor(private countriesService: CountriesService) {}

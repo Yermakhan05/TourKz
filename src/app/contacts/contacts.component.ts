@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {NgIf} from '@angular/common';
+import {UserFormService} from "../services/user-form.service";
 
 @Component({
   selector: 'app-contacts',
@@ -18,7 +19,7 @@ export class ContactsComponent {
   phone = '';
   comment = '';
 
-  constructor() {
+  constructor(private userFormService: UserFormService) {
   }
 
   submitForm(form: any) {
@@ -34,5 +35,13 @@ export class ContactsComponent {
       comment: this.comment,
       status: 'pending'
     };
+
+    this.userFormService.submitForm(formData).subscribe({
+      next: (response) => {
+        alert(response.message);
+        location.reload();
+      },
+      error: (error) => console.error('Ошибка:', error)
+    });
   }
 }

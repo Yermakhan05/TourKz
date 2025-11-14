@@ -12,7 +12,7 @@ export class CountriesService {
     constructor(private http: HttpClient) {}
 
     getCountries(): Observable<any[]> {
-        return this.http.get<Country[]>(this.apiUrl+'all?fields=name,flags');
+        return this.http.get<Country[]>(this.apiUrl+'all?fields=name,flags,cca3');
     }
 
 
@@ -21,5 +21,8 @@ export class CountriesService {
             return this.getCountries();
         }
         return this.http.get<Country[]>(`${this.apiUrl}name/${name}`);
+    }
+    getCountryByCode(code: string): Observable<Country[]> {
+        return this.http.get<Country[]>(`${this.apiUrl}alpha/${code}`);
     }
 }

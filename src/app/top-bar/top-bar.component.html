@@ -2,13 +2,38 @@
   <div class="top-bar-inner">
     <div class="first-bar">
       <div class="logo-container">
-        <img src="/assets/logoTour.png" alt="">
-        <img src="/assets/menu.png" class="menu-button" alt="Menu" (click)="toggleMenu()">
-        <div class="nav-links" [ngClass]="{ 'active': isMenuOpen }">
-          <a routerLink="/main" class="nav-link" (click)="toggleMenu()">Home</a>
-          <a class="nav-link" routerLink="/tours" (click)="toggleMenu()">Tours</a>
-          <a class="nav-link" routerLink="/contacts" (click)="toggleMenu()">Contacts</a>
-        </div>
+        <img src="./assets/logoTour.png" alt="">
+        <img src="./assets/menu.png" class="menu-button" alt="Menu" (click)="toggleMenu()">
+          <div class="nav-links" [ngClass]="{ 'active': isMenuOpen }">
+              <a routerLink="/main"
+                 routerLinkActive="active"
+                 [routerLinkActiveOptions]="{ exact: true }"
+                 class="nav-link"
+                 (click)="toggleMenu()">
+                  Home
+              </a>
+
+              <a routerLink="/tours"
+                 routerLinkActive="active"
+                 class="nav-link"
+                 (click)="toggleMenu()">
+                  Tours
+              </a>
+
+              <a routerLink="/contacts"
+                 routerLinkActive="active"
+                 class="nav-link"
+                 (click)="toggleMenu()">
+                  Contacts
+              </a>
+
+              <a routerLink="/login"
+                 routerLinkActive="active"
+                 class="nav-link"
+                 (click)="toggleMenu()">
+                  Login
+              </a>
+          </div>
       </div>
     </div>
     <div class="second-bar" *ngIf="!isSecondBarPage()">
@@ -16,24 +41,24 @@
         <div [ngClass]="{ 'hidden-contacts': isContactPage() }" class="contacts">
           <div class="social-icons">
             <a href="#" target="_blank" rel="noreferrer">
-              <img src="/assets/telegram.9e41b085.svg" alt="">
+              <img src="./assets/telegram.9e41b085.svg" alt="">
             </a>
             <a href="#" target="_blank" rel="noreferrer">
-              <img src="/assets/whatsapp.a4e76175.svg" alt="">
+              <img src="./assets/whatsapp.a4e76175.svg" alt="">
             </a>
             <a href="#" target="_blank" rel="noreferrer">
-              <img src="/assets/instagram.a1e35907.svg" alt="">
+              <img src="./assets/instagram.a1e35907.svg" alt="">
             </a>
           </div>
           <div class="contact-info">
             <div class="cont">
-              <img src="/assets/phone.200fe855.svg" alt="">
+              <img src="./assets/phone.200fe855.svg" alt="">
               <div class="location-input">
                 <div class="city"> +7 776 224 6936</div>
               </div>
             </div>
             <div class="cont">
-              <img src="/assets/location.8d2d075d.svg" alt="">
+              <img src="./assets/location.8d2d075d.svg" alt="">
               <div class="location-input">
                 <div class="city">Almaty</div>
               </div>
