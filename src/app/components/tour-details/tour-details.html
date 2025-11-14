@@ -1,0 +1,49 @@
+<div *ngIf="loading">Loading...</div>
+<div *ngIf="error">Country not found</div>
+
+<div *ngIf="country" class="details-container">
+    <button class="back-btn" (click)="back()">← Back</button>
+
+    <div class="country-card">
+        <div class="flag-box">
+            <img [src]="country.flags?.png" alt="Flag" />
+        </div>
+
+        <div class="info">
+            <h2>{{ country.name?.common }}</h2>
+            <h4>{{ country.name?.official }}</h4>
+
+            <div class="grid">
+                <div class="item">
+                    <span class="label">Region:</span>
+                    <span>{{ country.region }}</span>
+                </div>
+
+                <div class="item">
+                    <span class="label">Subregion:</span>
+                    <span>{{ country.subregion }}</span>
+                </div>
+
+                <div class="item">
+                    <span class="label">Capital:</span>
+                    <span>{{ country.capital?.[0] }}</span>
+                </div>
+
+                <div class="item">
+                    <span class="label">Population:</span>
+                    <span>{{ country.population | number }}</span>
+                </div>
+
+                <div class="item">
+                    <span class="label">Area:</span>
+                    <span>{{ country.area | number }} km²</span>
+                </div>
+
+                <div class="item">
+                    <span class="label">Continents:</span>
+                    <span>{{ country.continents?.join(', ') }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
