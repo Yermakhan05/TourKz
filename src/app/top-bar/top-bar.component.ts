@@ -1,8 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {NgClass, NgIf} from '@angular/common';
+import {AsyncPipe, NgClass, NgIf} from '@angular/common';
 import {NavigationEnd, Router, RouterLink, RouterLinkActive} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {UserFormService} from "../services/user-form.service";
+import {AuthService} from "../services/auth.service";
+import {Observable} from "rxjs";
 @Component({
   selector: 'app-top-bar',
   imports: [
@@ -10,7 +12,8 @@ import {UserFormService} from "../services/user-form.service";
     NgIf,
     RouterLink,
     FormsModule,
-    RouterLinkActive
+    RouterLinkActive,
+    AsyncPipe
   ],
   templateUrl: './top-bar.component.html',
   standalone: true,
@@ -23,6 +26,7 @@ export class TopBarComponent implements OnInit{
   email = '';
   phone = '';
   comment = '';
+  user$!: Observable<any>;
 
   submitForm(form: any) {
     if (form.invalid) {
@@ -55,10 +59,13 @@ export class TopBarComponent implements OnInit{
   }
 
   constructor(private userFormService: UserFormService,
-    private router: Router,
+    private router: Router, public auth: AuthService
   ) {
+    this.user$ = this.auth.user$;
   }
-
+  logout() {
+    this.auth.logout();
+  }
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;

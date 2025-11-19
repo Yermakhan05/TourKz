@@ -192,6 +192,7 @@ body{
   flex-direction: row;
   justify-content: center;
   margin: 5px 0 20px 0;
+  cursor: pointer;
 }
 .Register_Form-p-2{
   color: #6D6523;

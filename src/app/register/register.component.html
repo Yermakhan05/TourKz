@@ -1,20 +1,16 @@
-<div class='Main_Container' *ngIf="!isLoginPage()">
+<div class='Main_Container'>
   <div class="Container">
     <div class='Left_side_8Column' style="margin-top: 20px">
       <div class="Login_Form">
 
         <div class="Info">
           <h1 class='h1-Info'>Register</h1>
-          <p class='p-Info'>Discover the world with DeltaTour!</p>
+          <p class='p-Info'>Discover the world with TourKz!</p>
         </div>
 
         <div class="Form">
-          <p *ngIf="isIncorrectRegister" style="color: red">Password must be at least 6 characters
+          <p *ngIf="isIncorrectRegister" style="color: red">{{isIncorrectRegister}}
               Username or Email already used</p>
-          <div class="Input-Container">
-            <p class="Input-p">Username</p>
-            <input type="text" class="Input-input" [(ngModel)]="user.username">
-          </div>
           <div class="Input-Container">
             <p class="Input-p">Email</p>
             <input type="email" class="Input-input" [(ngModel)]="user.email">
@@ -29,24 +25,27 @@
           </div>
           <div class="ForgotPassword"></div>
           <div class="buttons">
-            <button class="MainButton-a" (click)="register()">Register</button>
+              <button class="MainButton-a" (click)="register()" [disabled]="loading">
+                  <span *ngIf="!loading">Register</span>
+                  <span *ngIf="loading">Registering...</span>
+              </button>
             <div class="Social_Sign_In-Or">
               <div class="line-a"></div>
               <p class='line-p'>or</p>
               <div class="line-b"></div>
             </div>
-            <div class="SocialButton-a">
+            <div class="SocialButton-a" (click)="registerWithGoogle()">
               <div class="social-img"></div>
               <p>Google</p>
             </div>
           </div>
         </div>
         <div class='Register_Form'>
-          <p class='Register_Form-p-1'>Have an account?</p>
+          <p class='Register_Form-p-1' routerLink="/login">Have an account?</p>
           <p class='Register_Form-p-2' routerLink="/login"></p>
         </div>
         <div class='CompanyName-div'>
-          <p class='CompanyName-p'>DeltaTour</p>
+          <p class='CompanyName-p'>TourKz</p>
         </div>
       </div>
     </div>
@@ -58,56 +57,3 @@
     </div>
   </div>
 </div>
-
-<ng-container *ngIf="isLoginPage()">
-  <div class='Main_Container'>
-    <div class="Container">
-      <div class='Left_side_8Column'>
-        <div class="Login_Form">
-          <div class="Info">
-            <h1 class='h1-Info'>Welcome! 👋</h1>
-            <p class='p-Info'>Book more tours with DeltaTour!</p>
-          </div>
-
-          <div class="Form">
-            <p *ngIf="isIncorrect" style="color: red">Incorrect password or username</p>
-            <div class="Input-Container">
-              <p class="Input-p">Username</p>
-              <input type="text" class="Input-input" placeholder="" [(ngModel)]="credentials.username">
-            </div>
-            <div class="Input-Container">
-              <p class="Input-p">Enter password</p>
-              <input class='Input-input' type="password" [(ngModel)]="credentials.password">
-            </div>
-            <p class="ForgotPassword">Forgot password</p>
-            <button class="MainButton-a" (click)="login()">Login</button>
-            <div class="Social_Sign_In-Or">
-              <div class="line-a"></div>
-              <p class='line-p'>or</p>
-              <div class="line-b"></div>
-            </div>
-            <div class="SocialButton-a">
-              <div class="social-img"></div>
-              <p>Google</p>
-            </div>
-          </div>
-
-          <div class='Register_Form'>
-            <p class='Register_Form-p-1'>No account?</p>
-            <p class='Register_Form-p-2' routerLink="/register">Sign up</p>
-          </div>
-
-          <div class='CompanyName-div'>
-            <p class='CompanyName-p'>DeltaTour</p>
-          </div>
-        </div>
-      </div>
-      <div class='Art'>
-        <div class="Art_Container">
-          <p class='p-Art'>Book an unforgettable trip in just a few clicks. Choose the best tours, enjoy comfort, and leave the organization to us!</p>
-          <div class='p-Art'></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</ng-container>

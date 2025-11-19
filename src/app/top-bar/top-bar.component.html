@@ -27,11 +27,16 @@
                   Contacts
               </a>
 
-              <a routerLink="/login"
-                 routerLinkActive="active"
-                 class="nav-link"
-                 (click)="toggleMenu()">
-                  Login
+              <a>
+                  <ng-container *ngIf="!(auth.user$ | async)">
+                      <a routerLink="/login" routerLinkActive="active" class="nav-link">Login</a>
+                      <a routerLink="/register" routerLinkActive="active" class="nav-link" style="margin-left: 10px">Signup</a>
+                  </ng-container>
+
+                  <ng-container *ngIf="auth.user$ | async as user">
+                      <a routerLink="/profile" routerLinkActive="active" class="nav-link">Profile</a>
+                      <a (click)="logout()" class="nav-link" style="margin-left: 10px">Logout</a>
+                  </ng-container>
               </a>
           </div>
       </div>
