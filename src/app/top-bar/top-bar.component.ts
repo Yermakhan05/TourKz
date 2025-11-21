@@ -77,6 +77,6 @@ export class TopBarComponent implements OnInit{
   }
 
   isSecondBarPage() {
-    return this.router.url === '/tours' || this.router.url === '/login';
+    return this.router.url.startsWith('/tours') || this.router.url === '/login';
   }
 }
