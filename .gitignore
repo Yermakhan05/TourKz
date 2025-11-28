@@ -3,3 +3,4 @@ node_modules/
 dist/
 out-tsc/
 .angular/
+src/environments/environment.ts
