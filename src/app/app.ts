@@ -7,7 +7,7 @@ import {Profile} from "./components/profile/profile";
 
 @Component({
   selector: 'app-root',
-  imports: [TopBarComponent, RouterOutlet, Profile],
+  imports: [TopBarComponent, RouterOutlet],
   templateUrl: './app.html',
   standalone: true,
   styleUrl: './app.css'

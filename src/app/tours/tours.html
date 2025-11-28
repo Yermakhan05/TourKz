@@ -1,3 +1,6 @@
+<div *ngIf="loading$ | async as loading">Loading...</div>
+<div *ngIf="error$ | async as error">Country not found</div>
+
 <div class="country-page">
     <div class="header">
         <div style="display: flex; flex-direction: row; align-items: center; justify-content: center">
@@ -16,8 +19,8 @@
         />
     </div>
 
-    <div *ngIf="countries.length > 0; else noResult" class="country-list">
-        <div *ngFor="let country of countries" class="country-card">
+    <div *ngIf="countries$ | async as country; else noResult" class="country-list">
+        <div *ngFor="let country of country" class="country-card">
             <img [src]="country.flags.svg" [alt]="country.name.common" class="flag" />
             <div class="country-info">
                 <h3>{{ country.name.common }}</h3>

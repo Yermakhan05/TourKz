@@ -1,0 +1,28 @@
+<div class="profile-container" *ngIf="!loading; else loadingTpl">
+
+    <div class="profile-card" *ngIf="user$ | async as user">
+
+        <div class="avatar">
+            <div class="circle">
+                {{ user.email[0] | uppercase }}
+            </div>
+        </div>
+
+        <h2 class="username">{{ user.email }}</h2>
+        <p class="userid">UID: {{ user.uid }}</p>
+
+        <div class="divider"></div>
+
+        <button class="logout-btn" (click)="logout()">
+            Logout
+        </button>
+
+    </div>
+
+</div>
+
+<ng-template #loadingTpl>
+    <div class="loading-container">
+        <div class="spinner"></div>
+    </div>
+</ng-template>

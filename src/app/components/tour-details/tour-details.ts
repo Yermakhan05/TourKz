@@ -1,45 +1,40 @@
 import {Component, OnInit} from '@angular/core';
-import {Country} from "../../models";
 import {ActivatedRoute} from "@angular/router";
-import {CountriesService} from "../../services/countries.service";
-import {DecimalPipe, NgIf} from "@angular/common";
+import {AsyncPipe, DecimalPipe, NgIf} from "@angular/common";
 import { Location } from '@angular/common';
+import {loadItem} from "../../tours/state/items.actions";
+import {selectItemError, selectItemLoading, selectSelectedItem} from "../../tours/state/items.selectors";
+import {Store} from "@ngrx/store";
+import {Observable} from "rxjs";
+import {Country} from "../../models";
 
 
 @Component({
   selector: 'app-tour-details',
   standalone: true,
-  imports: [NgIf, DecimalPipe],
+  imports: [NgIf, DecimalPipe, AsyncPipe],
   templateUrl: './tour-details.html',
   styleUrls: ['./tour-details.css']
 })
 export class TourDetails implements OnInit {
 
-  country: Country | null = null;
-  loading = true;
-  error = false;
+  country$!: Observable<Country | null>;
+  loading$!: Observable<boolean>;
+  error$!: Observable<boolean>;
 
   constructor(
+      private store: Store,
       private route: ActivatedRoute,
-      private countriesService: CountriesService,
       private location: Location
   ) {}
 
   ngOnInit() {
-    const code = this.route.snapshot.paramMap.get('code');
+    const id = this.route.snapshot.paramMap.get('code')!;
+    this.store.dispatch(loadItem({ id: id }));
 
-    if (code) {
-      this.countriesService.getCountryByCode(code).subscribe({
-        next: (data) => {
-          this.country = data[0];
-          this.loading = false;
-        },
-        error: () => {
-          this.error = true;
-          this.loading = false;
-        }
-      });
-    }
+    this.country$ = this.store.select(selectSelectedItem);
+    this.loading$ = this.store.select(selectItemLoading);
+    this.error$ = this.store.select(selectItemError);
   }
 
   back() {

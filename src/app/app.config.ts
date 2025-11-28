@@ -7,6 +7,11 @@ import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http"
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import {provideAuth, getAuth} from '@angular/fire/auth';
 import { environment } from "../environments/environment";
+import { provideStore } from '@ngrx/store';
+import { itemsReducer } from './tours/state/items.reducer';
+import { provideEffects } from '@ngrx/effects';
+import { ItemsEffects } from './tours/state/items.effects';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,6 +25,11 @@ export const appConfig: ApplicationConfig = {
     provideFirebaseApp(() => initializeApp(environment.firebase)),
 
     // ❗ Правильная инициализация Auth
-    provideAuth(() => getAuth())
+    provideAuth(() => getAuth()),
+    provideStore({
+      items: itemsReducer,
+    }),
+    provideEffects([ItemsEffects]),
+    provideStoreDevtools()
   ]
 };
