@@ -1,13 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {CountriesService} from "../services/countries.service";
+import {Component, inject, OnInit} from '@angular/core';
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {Country} from "../models";
-import {debounceTime, Observable, Subject, switchMap} from "rxjs";
+import {debounceTime, Observable, Subject} from "rxjs";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {selectItems, selectItemsError, selectItemsLoading} from "./state/items.selectors";
 import {Store} from "@ngrx/store";
 import {loadItems} from "./state/items.actions";
+import {AuthService} from "../services/auth.service";
+import {OfflineService} from "../services/offline.service";
 
 
 @Component({
@@ -18,6 +19,9 @@ import {loadItems} from "./state/items.actions";
   styleUrl: './tours.css'
 })
 export class Tours implements OnInit {
+  private offlineService = inject(OfflineService);
+
+  online$ = this.offlineService.online$
   search: string = '';
   countries$!: Observable<Country[] | null>;
   loading$!: Observable<boolean>;

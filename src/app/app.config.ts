@@ -1,4 +1,4 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChangeDetection, isDevMode } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -12,6 +12,7 @@ import { itemsReducer } from './tours/state/items.reducer';
 import { provideEffects } from '@ngrx/effects';
 import { ItemsEffects } from './tours/state/items.effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { provideServiceWorker } from '@angular/service-worker';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -30,6 +31,9 @@ export const appConfig: ApplicationConfig = {
       items: itemsReducer,
     }),
     provideEffects([ItemsEffects]),
-    provideStoreDevtools()
+    provideStoreDevtools(), provideServiceWorker('ngsw-worker.js', {
+            enabled: !isDevMode(),
+            registrationStrategy: 'registerWhenStable:30000'
+          })
   ]
 };

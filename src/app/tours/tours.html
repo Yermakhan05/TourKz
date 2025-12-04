@@ -1,6 +1,15 @@
 <div *ngIf="loading$ | async as loading">Loading...</div>
 <div *ngIf="error$ | async as error">Country not found</div>
 
+<div *ngIf="!(online$ | async)" class="offline-banner">
+    ⚠️ You are offline. Some features may not work.
+</div>
+
+<!-- обычный контент -->
+<ng-container *ngIf="online$ | async">
+    <!-- tours list -->
+</ng-container>
+
 <div class="country-page">
     <div class="header">
         <div style="display: flex; flex-direction: row; align-items: center; justify-content: center">
@@ -14,6 +23,7 @@
         <input
                 type="search"
                 placeholder="🔍 Search for a country..."
+                [value]="search"
                 (input)="searchResult($event.target.value)"
                 class="search-box"
         />
