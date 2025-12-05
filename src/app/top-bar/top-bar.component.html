@@ -27,6 +27,13 @@
                   Contacts
               </a>
 
+              <a routerLink="/favorites"
+                 routerLinkActive="active"
+                 class="nav-link"
+                 (click)="toggleMenu()">
+                  Favorites
+              </a>
+
               <a>
                   <ng-container *ngIf="!(auth.user$ | async)">
                       <a routerLink="/login" routerLinkActive="active" class="nav-link">Login</a>

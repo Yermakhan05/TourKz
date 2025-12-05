@@ -7,8 +7,8 @@ import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {selectItems, selectItemsError, selectItemsLoading} from "./state/items.selectors";
 import {Store} from "@ngrx/store";
 import {loadItems} from "./state/items.actions";
-import {AuthService} from "../services/auth.service";
 import {OfflineService} from "../services/offline.service";
+import {FavoritesService} from "../services/favorites.service";
 
 
 @Component({
@@ -27,14 +27,20 @@ export class Tours implements OnInit {
   loading$!: Observable<boolean>;
   error$!: Observable<boolean>;
 
-
+  private favoritesService = inject(FavoritesService)
   private searchSubject = new Subject<string>();
+  favorites$ = this.favoritesService.favorites$;
 
   constructor(
       private store: Store,
       private route: ActivatedRoute,
-      private router: Router
+      private router: Router,
   ) {}
+
+
+  toggle(id: string) {
+    this.favoritesService.toggleFavorite(id);
+  }
 
   ngOnInit() {
     this.countries$ = this.store.select(selectItems);

@@ -1,39 +1,19 @@
-<div *ngIf="loading$ | async as loading">
+<div *ngIf="loading">
     <div class="loading-container">
         <div class="spinner"></div>
     </div>
 </div>
-<div *ngIf="error$ | async as error">Country not found</div>
-
-<div *ngIf="!(online$ | async)" class="offline-banner">
-    ⚠️ You are offline. Some features may not work.
-</div>
-
-<!-- обычный контент -->
-<ng-container *ngIf="online$ | async">
-    <!-- tours list -->
-</ng-container>
 
 <div class="country-page">
     <div class="header">
         <div style="display: flex; flex-direction: row; align-items: center; justify-content: center">
             <img class="logo-img" src="./assets/tours.png">
-            <h1>Explore Our Destinations</h1>
+            <h1>Your favorite countries</h1>
         </div>
         <p class="subtitle">Discover countries where unforgettable tours await you!</p>
     </div>
 
-    <div class="search-section">
-        <input
-                type="search"
-                placeholder="🔍 Search for a country..."
-                [value]="search"
-                (input)="searchResult($event.target.value)"
-                class="search-box"
-        />
-    </div>
-
-    <div *ngIf="countries$ | async as country; else noResult" class="country-list">
+    <div *ngIf="favoriteCountries$ | async as country; else noResult" class="country-list">
         <div *ngFor="let country of country" class="country-card">
             <img [src]="country.flags.svg" [alt]="country.name.common" class="flag" />
             <button (click)="toggle(country.cca3)">
@@ -50,3 +30,4 @@
         <p class="no-result">😕 No countries found. Try another search.</p>
     </ng-template>
 </div>
+

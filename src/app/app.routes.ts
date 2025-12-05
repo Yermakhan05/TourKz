@@ -7,6 +7,7 @@ import {TourDetails} from "./components/tour-details/tour-details";
 import {AuthGuard} from "./services/auth.guard";
 import {Profile} from "./components/profile/profile";
 import {Login} from "./components/login/login";
+import {Favorites} from "./components/favorites/favorites";
 
 export const routes: Routes = [
     { path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -17,5 +18,6 @@ export const routes: Routes = [
     { path: 'login', component: Login },
     { path: 'tours/:code', component: TourDetails },
     { path: 'profile', component: Profile, canActivate: [AuthGuard] },
+    { path: 'favorites', component: Favorites },
     { path: '**', redirectTo: '' },
 ];

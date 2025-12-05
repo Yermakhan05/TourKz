@@ -1,6 +1,6 @@
 .country-page {
     font-family: 'Poppins', sans-serif;
-    margin-top: -80px;
+    margin-top: 10px;
     padding: 40px 10%;
     min-height: 100vh;
     color: #333;
@@ -103,9 +103,8 @@
     font-size: 18px;
     margin-top: 50px;
 }
-
 .loading-container {
-    margin-top: 250px;
+    margin-top: 80px;
     display: flex;
     justify-content: center;
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {catchError, forkJoin, Observable, of, switchMap} from 'rxjs';
 import {Country} from "../models";
 import {map} from "rxjs/operators";
 
@@ -30,5 +30,27 @@ export class CountriesService {
             .pipe(
                 map(arr => arr[0])   // берем первый элемент
             );
+    }
+
+    getCountriesByCode(codes: string[]): Observable<Country[]> {
+        if (!codes || codes.length === 0) {
+            return of([]);
+        }
+
+        return forkJoin(
+            codes.map(code =>
+                this.http
+                    .get<Country[]>(`https://restcountries.com/v3.1/alpha/${code}`)
+                    .pipe(
+                        map(res => res[0]),        // берём первый объект
+                        catchError(err => {
+                            console.error(`Error loading country ${code}`, err);
+                            return of(null as any); // не ломаем весь forkJoin
+                        })
+                    )
+            )
+        ).pipe(
+            map(list => list.filter((c) => c !== null)) // убираем ошибки
+        );
     }
 }

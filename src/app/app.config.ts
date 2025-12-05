@@ -13,6 +13,8 @@ import { provideEffects } from '@ngrx/effects';
 import { ItemsEffects } from './tours/state/items.effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { provideServiceWorker } from '@angular/service-worker';
+import {getFirestore, provideFirestore} from "@angular/fire/firestore";
+import {getStorage, provideStorage} from "@angular/fire/storage";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -27,6 +29,8 @@ export const appConfig: ApplicationConfig = {
 
     // ❗ Правильная инициализация Auth
     provideAuth(() => getAuth()),
+    provideStorage(() => getStorage()),
+    provideFirestore(() => getFirestore()),
     provideStore({
       items: itemsReducer,
     }),

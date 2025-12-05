@@ -4,12 +4,18 @@
 
         <div class="avatar">
             <div class="circle">
-                {{ user.email[0] | uppercase }}
+                <img *ngIf="userProfile$ | async as user" [src]="user.avatarUrl" alt="Profile Picture">
+
+                <ng-template #noAvatar>
+                    <div class="avatar-placeholder">No Avatar</div>
+                </ng-template>
             </div>
         </div>
 
         <h2 class="username">{{ user.email }}</h2>
         <p class="userid">UID: {{ user.uid }}</p>
+
+        <input type="file" accept="image/*" (change)="selectFile($event)">
 
         <div class="divider"></div>
 
