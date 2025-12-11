@@ -5,11 +5,12 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, TranslateModule],
   templateUrl: './about.html',
   styleUrl: './about.css',
 })
@@ -24,9 +25,10 @@ export class About implements OnInit, OnDestroy {
   mission = 'These popular destinations have something to offer';
 
 
+
   ngOnInit() {}
 
-  constructor() {
+  constructor(private translate: TranslateService) {
     this.intervalId = setInterval(() => {
       this.changeImage();
     }, 3000);

@@ -1,0 +1,47 @@
+<div class="offline-page">
+  <div class="offline-container">
+    <div class="offline-icon">
+      <svg width="120" height="120" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4"/>
+        <path d="M12 6V12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M12 16H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+    
+    <h1 class="offline-title">{{ 'OFFLINE.TITLE' | translate }}</h1>
+    <p class="offline-message">{{ 'OFFLINE.MESSAGE' | translate }}</p>
+    
+    <div class="offline-features">
+      <div class="feature-item">
+        <span class="feature-icon">📱</span>
+        <span>{{ 'OFFLINE.FEATURE_1' | translate }}</span>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">⭐</span>
+        <span>{{ 'OFFLINE.FEATURE_2' | translate }}</span>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">🔍</span>
+        <span>{{ 'OFFLINE.FEATURE_3' | translate }}</span>
+      </div>
+    </div>
+
+    <div class="offline-actions">
+      <button class="retry-btn" (click)="checkConnection()">
+        <span class="btn-icon">🔄</span>
+        {{ 'OFFLINE.RETRY' | translate }}
+      </button>
+      <button class="cached-btn" (click)="goToCachedContent()">
+        <span class="btn-icon">📄</span>
+        {{ 'OFFLINE.VIEW_CACHED' | translate }}
+      </button>
+    </div>
+
+    <div class="connection-status" [class.online]="isOnline">
+      <div class="status-indicator"></div>
+      <span *ngIf="!isOnline">{{ 'OFFLINE.STATUS_OFFLINE' | translate }}</span>
+      <span *ngIf="isOnline" class="online-text">{{ 'OFFLINE.STATUS_ONLINE' | translate }}</span>
+    </div>
+  </div>
+</div>
+

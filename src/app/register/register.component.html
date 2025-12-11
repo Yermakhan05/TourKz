@@ -4,44 +4,44 @@
       <div class="Login_Form">
 
         <div class="Info">
-          <h1 class='h1-Info'>Register</h1>
-          <p class='p-Info'>Discover the world with TourKz!</p>
+          <h1 class='h1-Info'>{{ 'REGISTER.REGISTER' | translate }}</h1>
+          <p class='p-Info'>{{ 'REGISTER.DISCOVER_WORLD' | translate }}</p>
         </div>
 
         <div class="Form">
           <p *ngIf="isIncorrectRegister" style="color: red">{{isIncorrectRegister}}
-              Username or Email already used</p>
+              {{ 'REGISTER.USERNAME_EMAIL_USED' | translate }}</p>
           <div class="Input-Container">
-            <p class="Input-p">Email</p>
+            <p class="Input-p">{{ 'TOP_BAR.EMAIL' | translate }}</p>
             <input type="email" class="Input-input" [(ngModel)]="user.email">
           </div>
           <div class="Input-Container">
-            <p class="Input-p">Enter password</p>
+            <p class="Input-p">{{ 'LOGIN.ENTER_PASSWORD' | translate }}</p>
             <input class='Input-input' type="password" [(ngModel)]="user.password">
           </div>
           <div class="Input-Container">
-            <p class="Input-p">Confirm password</p>
+            <p class="Input-p">{{ 'REGISTER.CONFIRM_PASSWORD' | translate }}</p>
             <input class='Input-input' type="password" [(ngModel)]="user.password_1">
           </div>
           <div class="ForgotPassword"></div>
           <div class="buttons">
               <button class="MainButton-a" (click)="register()" [disabled]="loading">
-                  <span *ngIf="!loading">Register</span>
-                  <span *ngIf="loading">Registering...</span>
+                  <span *ngIf="!loading">{{ 'REGISTER.REGISTER' | translate }}</span>
+                  <span *ngIf="loading">{{ 'REGISTER.REGISTERING' | translate }}</span>
               </button>
             <div class="Social_Sign_In-Or">
               <div class="line-a"></div>
-              <p class='line-p'>or</p>
+              <p class='line-p'>{{ 'COMMON.OR' | translate }}</p>
               <div class="line-b"></div>
             </div>
             <div class="SocialButton-a" (click)="registerWithGoogle()">
               <div class="social-img"></div>
-              <p>Google</p>
+              <p>{{ 'COMMON.GOOGLE' | translate }}</p>
             </div>
           </div>
         </div>
         <div class='Register_Form'>
-          <p class='Register_Form-p-1' routerLink="/login">Have an account?</p>
+          <p class='Register_Form-p-1' routerLink="/login">{{ 'REGISTER.HAVE_ACCOUNT' | translate }}</p>
           <p class='Register_Form-p-2' routerLink="/login"></p>
         </div>
         <div class='CompanyName-div'>
@@ -51,7 +51,7 @@
     </div>
     <div class='Art'>
       <div class="Art_Container">
-        <p class='p-Art'>Book an unforgettable trip in just a few clicks. Choose the best tours, enjoy comfort, and leave the organization to us!</p>
+        <p class='p-Art'>{{ 'LOGIN.BOOK_UNFORGETTABLE' | translate }}</p>
         <div class='p-Art'></div>
       </div>
     </div>

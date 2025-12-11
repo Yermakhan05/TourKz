@@ -86,6 +86,14 @@
             ],
             "styles": [
               "src/styles.css"
+            ],
+            "codeCoverage": true,
+            "codeCoverageExclude": [
+              "**/*.spec.ts",
+              "**/node_modules/**",
+              "**/dist/**",
+              "**/*.module.ts",
+              "**/environments/**"
             ]
           }
         }

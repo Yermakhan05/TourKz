@@ -1,10 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {AsyncPipe, NgClass, NgIf} from '@angular/common';
+import {AsyncPipe, NgClass, NgForOf, NgIf} from '@angular/common';
 import {NavigationEnd, Router, RouterLink, RouterLinkActive} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {UserFormService} from "../services/user-form.service";
 import {AuthService} from "../services/auth.service";
 import {Observable} from "rxjs";
+import {TranslateModule, TranslateService} from '@ngx-translate/core';
+import {LanguageService} from "../services/language.service";
 @Component({
   selector: 'app-top-bar',
   imports: [
@@ -13,7 +15,9 @@ import {Observable} from "rxjs";
     RouterLink,
     FormsModule,
     RouterLinkActive,
-    AsyncPipe
+    AsyncPipe,
+    TranslateModule,
+    NgForOf
   ],
   templateUrl: './top-bar.component.html',
   standalone: true,
@@ -27,10 +31,36 @@ export class TopBarComponent implements OnInit{
   phone = '';
   comment = '';
   user$!: Observable<any>;
+  currentLanguage = 'en';
+  supportedLanguages = ['en', 'ru', 'kz'];
+
+  constructor(
+    private userFormService: UserFormService,
+    private router: Router, 
+    public auth: AuthService,
+    private translate: TranslateService,
+    private languageService: LanguageService
+  ) {
+    this.user$ = this.auth.user$;
+    this.currentLanguage = this.languageService.getCurrentLanguage();
+    this.languageService.currentLanguage$.subscribe(lang => {
+      this.currentLanguage = lang;
+    });
+  }
+
+  changeLanguage(lang: string): void {
+    this.languageService.setLanguage(lang);
+  }
+
+  getLanguageName(lang: string): string {
+    return this.languageService.getLanguageName(lang);
+  }
 
   submitForm(form: any) {
     if (form.invalid) {
-      alert('Заполните все обязательные поля!');
+      this.translate.get('TOP_BAR.FILL_REQUIRED').subscribe((text: string) => {
+        alert(text);
+      });
       return;
     }
     const formData = {
@@ -53,18 +83,14 @@ export class TopBarComponent implements OnInit{
   ngOnInit(): void {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        window.scrollTo(0, 0); // Прокрутка в самый верх
+        window.scrollTo(0, 0);
       }
     });
   }
 
-  constructor(private userFormService: UserFormService,
-    private router: Router, public auth: AuthService
-  ) {
-    this.user$ = this.auth.user$;
-  }
   logout() {
     this.auth.logout();
+    this.router.navigate(['login'])
   }
 
   toggleMenu() {

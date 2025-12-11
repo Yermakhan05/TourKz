@@ -10,41 +10,49 @@
                  [routerLinkActiveOptions]="{ exact: true }"
                  class="nav-link"
                  (click)="toggleMenu()">
-                  Home
+                  {{ 'COMMON.HOME' | translate }}
               </a>
 
               <a routerLink="/tours"
                  routerLinkActive="active"
                  class="nav-link"
                  (click)="toggleMenu()">
-                  Tours
+                  {{ 'COMMON.TOURS' | translate }}
               </a>
 
               <a routerLink="/contacts"
                  routerLinkActive="active"
                  class="nav-link"
                  (click)="toggleMenu()">
-                  Contacts
+                  {{ 'COMMON.CONTACTS' | translate }}
               </a>
 
               <a routerLink="/favorites"
                  routerLinkActive="active"
                  class="nav-link"
                  (click)="toggleMenu()">
-                  Favorites
+                  {{ 'COMMON.FAVORITES' | translate }}
               </a>
 
               <a>
                   <ng-container *ngIf="!(auth.user$ | async)">
-                      <a routerLink="/login" routerLinkActive="active" class="nav-link">Login</a>
-                      <a routerLink="/register" routerLinkActive="active" class="nav-link" style="margin-left: 10px">Signup</a>
+                      <a routerLink="/login" routerLinkActive="active" class="nav-link">{{ 'COMMON.LOGIN' | translate }}</a>
+                      <a routerLink="/register" routerLinkActive="active" class="nav-link" style="margin-left: 10px">{{ 'COMMON.SIGNUP' | translate }}</a>
                   </ng-container>
 
                   <ng-container *ngIf="auth.user$ | async as user">
-                      <a routerLink="/profile" routerLinkActive="active" class="nav-link">Profile</a>
-                      <a (click)="logout()" class="nav-link" style="margin-left: 10px">Logout</a>
+                      <a routerLink="/profile" routerLinkActive="active" class="nav-link">{{ 'COMMON.PROFILE' | translate }}</a>
+                      <a (click)="logout()" class="nav-link" style="margin-left: 10px">{{ 'COMMON.LOGOUT' | translate }}</a>
                   </ng-container>
               </a>
+
+              <div class="language-switcher">
+                <select class="language-select" [value]="currentLanguage" (change)="changeLanguage($any($event.target).value)">
+                  <option *ngFor="let lang of supportedLanguages" [value]="lang">
+                    {{ getLanguageName(lang) }}
+                  </option>
+                </select>
+              </div>
           </div>
       </div>
     </div>
@@ -78,7 +86,7 @@
             <div class="call-button" (click)="isForm = !isForm">
               <div class="call-button-in">
                 <div style="margin-top: 7px;">
-                    Booking a call
+                    {{ 'TOP_BAR.BOOKING_CALL' | translate }}
                 </div>
               </div>
             </div>
@@ -96,7 +104,7 @@
             <!-- (3) Event binding -->
             <button (click)="isForm = !isForm" class="close-btn">&times;</button>
 
-            <h2 class="modal-title">Tour Selection Application</h2>
+            <h2 class="modal-title">{{ 'TOP_BAR.TOUR_SELECTION' | translate }}</h2>
 
             <form class="tour-form" #formRef="ngForm" (ngSubmit)="submitForm(formRef)">
 
@@ -105,32 +113,32 @@
                     <input
                             type="text"
                             class="form-input"
-                            placeholder="Your name *"
+                            [placeholder]="'TOP_BAR.YOUR_NAME' | translate"
                             [(ngModel)]="name"
                             name="name"
                             #nameRef="ngModel"
                             required>
                     <span *ngIf="nameRef.invalid && nameRef.touched" class="error-text">
-            Имя обязательно!
+            {{ 'TOP_BAR.NAME_REQUIRED' | translate }}
           </span>
                 </div>
                 <!-- (1) Interpolation -->
                 <div class="preview" *ngIf="name">
-                    <p><strong>Hello, </strong> {{ name }}!</p>
+                    <p><strong>{{ 'TOP_BAR.HELLO' | translate }}</strong> {{ name }}!</p>
                 </div>
 
                 <div class="form-group">
                     <input
                             type="email"
                             class="form-input"
-                            placeholder="Email"
+                            [placeholder]="'TOP_BAR.EMAIL' | translate"
                             [(ngModel)]="email"
                             name="email"
                             #emailRef="ngModel"
                             required
                             email>
                     <span *ngIf="emailRef.invalid && emailRef.touched" class="error-text">
-            Введите корректный email!
+            {{ 'TOP_BAR.EMAIL_INVALID' | translate }}
           </span>
                 </div>
 
@@ -141,13 +149,13 @@
                         <input
                                 type="tel"
                                 class="form-input phone-number"
-                                placeholder="(000) 000-0000"
+                                [placeholder]="'TOP_BAR.PHONE_PLACEHOLDER' | translate"
                                 [(ngModel)]="phone"
                                 name="phone"
                                 #phoneRef="ngModel"
                                 required>
                         <span *ngIf="phoneRef.invalid && phoneRef.touched" class="error-text">
-              Телефон обязателен!
+              {{ 'TOP_BAR.PHONE_REQUIRED' | translate }}
             </span>
                     </div>
                 </div>
@@ -155,7 +163,7 @@
                 <div class="form-group">
           <textarea
                   class="form-input textarea"
-                  placeholder="Comment"
+                  [placeholder]="'TOP_BAR.COMMENT' | translate"
                   [(ngModel)]="comment"
                   name="comment">
           </textarea>
@@ -163,7 +171,7 @@
 
                 <!-- (2) Property binding -->
                 <button type="submit" class="submit-btn" [disabled]="formRef.invalid">
-                    Submit
+                    {{ 'COMMON.SUBMIT' | translate }}
                 </button>
             </form>
         </div>

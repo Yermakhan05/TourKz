@@ -1,4 +1,4 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChangeDetection, isDevMode } from '@angular/core';
+import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChangeDetection, isDevMode, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -15,6 +15,9 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { provideServiceWorker } from '@angular/service-worker';
 import {getFirestore, provideFirestore} from "@angular/fire/firestore";
 import {getStorage, provideStorage} from "@angular/fire/storage";
+import { TranslateModule } from '@ngx-translate/core';
+import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
+
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -35,9 +38,21 @@ export const appConfig: ApplicationConfig = {
       items: itemsReducer,
     }),
     provideEffects([ItemsEffects]),
-    provideStoreDevtools(), provideServiceWorker('ngsw-worker.js', {
-            enabled: !isDevMode(),
-            registrationStrategy: 'registerWhenStable:30000'
-          })
+    provideStoreDevtools(), 
+    provideServiceWorker('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
+    
+    // i18n Translation
+    importProvidersFrom(
+      TranslateModule.forRoot({
+        defaultLanguage: 'en'
+      })
+    ),
+    provideTranslateHttpLoader({
+      prefix: './assets/i18n/',
+      suffix: '.json'
+    })
   ]
 };

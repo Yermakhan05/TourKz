@@ -5,6 +5,7 @@ import {RouterLink} from "@angular/router";
 import {CountriesService} from "../../services/countries.service";
 import {catchError, Observable, of, switchMap, tap} from "rxjs";
 import {Country} from "../../models";
+import {TranslateModule} from "@ngx-translate/core";
 
 
 @Component({
@@ -13,7 +14,8 @@ import {Country} from "../../models";
     AsyncPipe,
     NgIf,
     NgForOf,
-    RouterLink
+    RouterLink,
+    TranslateModule
   ],
   templateUrl: './favorites.html',
   standalone: true,

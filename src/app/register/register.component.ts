@@ -3,13 +3,15 @@ import {NgIf} from '@angular/common';
 import {Router, RouterLink} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {AuthService} from "../services/auth.service";
+import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-register',
   imports: [
     NgIf,
     RouterLink,
-    FormsModule
+    FormsModule,
+    TranslateModule
   ],
   templateUrl: './register.component.html',
   standalone: true,

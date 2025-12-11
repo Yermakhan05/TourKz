@@ -2,12 +2,14 @@ import { Component } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {NgIf} from '@angular/common';
 import {UserFormService} from "../services/user-form.service";
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-contacts',
   imports: [
     FormsModule,
-    NgIf
+    NgIf,
+    TranslateModule
   ],
   templateUrl: './contacts.component.html',
   standalone: true,
@@ -19,12 +21,17 @@ export class ContactsComponent {
   phone = '';
   comment = '';
 
-  constructor(private userFormService: UserFormService) {
+  constructor(
+    private userFormService: UserFormService,
+    private translate: TranslateService
+  ) {
   }
 
   submitForm(form: any) {
     if (form.invalid) {
-      alert('Заполните все обязательные поля!');
+      this.translate.get('TOP_BAR.FILL_REQUIRED').subscribe((text: string) => {
+        alert(text);
+      });
       return;
     }
 

@@ -1,0 +1,102 @@
+{
+  "COMMON": {
+    "HOME": "Home",
+    "TOURS": "Tours",
+    "CONTACTS": "Contacts",
+    "FAVORITES": "Favorites",
+    "LOGIN": "Login",
+    "SIGNUP": "Signup",
+    "PROFILE": "Profile",
+    "LOGOUT": "Logout",
+    "SUBMIT": "Submit",
+    "LOADING": "Loading...",
+    "OR": "or",
+    "GOOGLE": "Google",
+    "MENU": "Menu"
+  },
+  "OFFLINE": {
+    "BANNER": "⚠️ You are offline. Some features may not work.",
+    "TITLE": "You're Offline",
+    "MESSAGE": "It looks like you've lost your internet connection. Don't worry, you can still access some features!",
+    "FEATURE_1": "Browse cached content",
+    "FEATURE_2": "View your favorites",
+    "FEATURE_3": "Access previously loaded pages",
+    "RETRY": "Retry Connection",
+    "VIEW_CACHED": "View Cached Content",
+    "STATUS_OFFLINE": "Currently Offline",
+    "STATUS_ONLINE": "Connection Restored!"
+  },
+  "TOP_BAR": {
+    "BOOKING_CALL": "Booking a call",
+    "TOUR_SELECTION": "Tour Selection Application",
+    "YOUR_NAME": "Your name *",
+    "EMAIL": "Email",
+    "PHONE": "Phone",
+    "COMMENT": "Comment",
+    "NAME_REQUIRED": "Имя обязательно!",
+    "EMAIL_INVALID": "Введите корректный email!",
+    "PHONE_REQUIRED": "Телефон обязателен!",
+    "HELLO": "Hello, ",
+    "FILL_REQUIRED": "Заполните все обязательные поля!",
+    "PHONE_PLACEHOLDER": "(000) 000-0000"
+  },
+  "TOURS": {
+    "EXPLORE_DESTINATIONS": "Explore Our Destinations",
+    "DISCOVER_SUBTITLE": "Discover countries where unforgettable tours await you!",
+    "SEARCH_COUNTRY": "🔍 Search for a country...",
+    "CLICK_EXPLORE": "Click to explore tours in",
+    "PREV": "◀ Prev",
+    "NEXT": "Next ▶",
+    "PAGE": "Page",
+    "NO_COUNTRIES": "😕 No countries found. Try another search.",
+    "COUNTRY_NOT_FOUND": "Country not found"
+  },
+  "ABOUT": {
+    "TOUR_KAZAKHSTAN": "Tour Kazakhstan",
+    "FULL_SUPPORT": "Full Support",
+    "FULL_SUPPORT_DESC": "Our staff will assist you at any stage of the visa process: from consultation on visa type selection and document collection to filling out immigration forms.",
+    "VISA_SUCCESS": "87% of Clients Got Their Visas",
+    "VISA_SUCCESS_DESC": "Thanks to the high-quality work of our staff, most clients successfully obtain their visas. We strive to help every applicant.",
+    "FAST_PROCESSING": "We Process Fast",
+    "FAST_PROCESSING_DESC": "No matter the purpose of your trip—tourism, study, or business—we will process your application quickly and efficiently.",
+    "OVER_800_VISAS": "Over 800 Visas Processed",
+    "OVER_800_DESC": "Every day, people with different purposes—tourism, education, work—come to us for high-quality visa processing.",
+    "IDEAL_DESTINATION": "We will help you find your ideal vacation destination.",
+    "VIDEO_NOT_SUPPORTED": "Ваш браузер не поддерживает видео."
+  },
+  "LOGIN": {
+    "WELCOME": "Welcome! 👋",
+    "BOOK_MORE": "Book more tours with TourKz!",
+    "USERNAME": "Username",
+    "ENTER_PASSWORD": "Enter password",
+    "FORGOT_PASSWORD": "Forgot password",
+    "NO_ACCOUNT": "No account?",
+    "BOOK_UNFORGETTABLE": "Book an unforgettable trip in just a few clicks. Choose the best tours, enjoy comfort, and leave the organization to us!"
+  },
+  "REGISTER": {
+    "REGISTER": "Register",
+    "DISCOVER_WORLD": "Discover the world with TourKz!",
+    "CONFIRM_PASSWORD": "Confirm password",
+    "REGISTERING": "Registering...",
+    "HAVE_ACCOUNT": "Have an account?",
+    "USERNAME_EMAIL_USED": "Username or Email already used"
+  },
+  "CONTACTS": {
+    "CONTACTS": "Contacts",
+    "NAME": "Name",
+    "SOCIAL_NETWORKS": "Social networks:"
+  },
+  "PROFILE": {
+    "UID": "UID:",
+    "LOGOUT": "Logout",
+    "MAX_SIZE": "Maximum 30 KB!"
+  },
+  "FAVORITES": {
+    "TITLE": "Favorites",
+    "YOUR_FAVORITE_COUNTRIES": "Your favorite countries",
+    "DISCOVER_SUBTITLE": "Discover countries where unforgettable tours await you!",
+    "CLICK_EXPLORE": "Click to explore tours in",
+    "NO_COUNTRIES": "😕 No countries found. Try another search."
+  }
+}
+

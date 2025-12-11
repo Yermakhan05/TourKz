@@ -15,14 +15,14 @@
 
 
         <h2 class="username">{{ user.email }}</h2>
-        <p class="userid">UID: {{ user.uid }}</p>
+        <p class="userid">{{ 'PROFILE.UID' | translate }} {{ user.uid }}</p>
 
         <input type="file" accept="image/*" (change)="selectFile($event)">
 
         <div class="divider"></div>
 
         <button class="logout-btn" (click)="logout()">
-            Logout
+            {{ 'PROFILE.LOGOUT' | translate }}
         </button>
 
     </div>

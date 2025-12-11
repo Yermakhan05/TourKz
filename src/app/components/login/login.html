@@ -4,43 +4,43 @@
             <div class='Left_side_8Column'>
                 <div class="Login_Form">
                     <div class="Info">
-                        <h1 class='h1-Info'>Welcome! 👋</h1>
-                        <p class='p-Info'>Book more tours with TourKz!</p>
+                        <h1 class='h1-Info'>{{ 'LOGIN.WELCOME' | translate }}</h1>
+                        <p class='p-Info'>{{ 'LOGIN.BOOK_MORE' | translate }}</p>
                     </div>
 
                     <div class="Form">
                         <p *ngIf="error" style="color: red">{{error}}</p>
                         <div class="Input-Container">
-                            <p class="Input-p">Username</p>
+                            <p class="Input-p">{{ 'LOGIN.USERNAME' | translate }}</p>
                             <input type="text" class="Input-input" placeholder="" [(ngModel)]="credentials.email">
                         </div>
                         <div class="Input-Container">
-                            <p class="Input-p">Enter password</p>
+                            <p class="Input-p">{{ 'LOGIN.ENTER_PASSWORD' | translate }}</p>
                             <input class='Input-input' type="password" [(ngModel)]="credentials.password">
                         </div>
-                        <p class="ForgotPassword">Forgot password</p>
+                        <p class="ForgotPassword">{{ 'LOGIN.FORGOT_PASSWORD' | translate }}</p>
                         <button
                                 class="MainButton-a"
                                 (click)="login()"
                                 [disabled]="loading"
                         >
-                            <ng-container *ngIf="!loading">Login</ng-container>
-                            <ng-container *ngIf="loading">Loading...</ng-container>
+                            <ng-container *ngIf="!loading">{{ 'COMMON.LOGIN' | translate }}</ng-container>
+                            <ng-container *ngIf="loading">{{ 'COMMON.LOADING' | translate }}</ng-container>
                         </button>
                         <div class="Social_Sign_In-Or">
                             <div class="line-a"></div>
-                            <p class='line-p'>or</p>
+                            <p class='line-p'>{{ 'COMMON.OR' | translate }}</p>
                             <div class="line-b"></div>
                         </div>
                         <div class="SocialButton-a" (click)="loginWithGoogle()">
                             <div class="social-img"></div>
-                            <p>Google</p>
+                            <p>{{ 'COMMON.GOOGLE' | translate }}</p>
                         </div>
                     </div>
 
                     <div class='Register_Form'>
-                        <p class='Register_Form-p-1'>No account?</p>
-                        <p class='Register_Form-p-2' routerLink="/register">Sign up</p>
+                        <p class='Register_Form-p-1'>{{ 'LOGIN.NO_ACCOUNT' | translate }}</p>
+                        <p class='Register_Form-p-2' routerLink="/register">{{ 'COMMON.SIGNUP' | translate }}</p>
                     </div>
 
                     <div class='CompanyName-div'>
@@ -50,7 +50,7 @@
             </div>
             <div class='Art'>
                 <div class="Art_Container">
-                    <p class='p-Art'>Book an unforgettable trip in just a few clicks. Choose the best tours, enjoy comfort, and leave the organization to us!</p>
+                    <p class='p-Art'>{{ 'LOGIN.BOOK_UNFORGETTABLE' | translate }}</p>
                     <div class='p-Art'></div>
                 </div>
             </div>

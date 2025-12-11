@@ -3,13 +3,15 @@ import {FormsModule} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 import {Router, RouterLink} from "@angular/router";
 import {NgIf} from "@angular/common";
+import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-login',
   imports: [
     FormsModule,
     NgIf,
-    RouterLink
+    RouterLink,
+    TranslateModule
   ],
   templateUrl: './login.html',
   standalone: true,

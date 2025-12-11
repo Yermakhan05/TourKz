@@ -95,6 +95,36 @@
   border-bottom: 2px solid #ffdd40;  /* или линия снизу */
 }
 
+.language-switcher {
+  margin-left: 20px;
+}
+
+.language-select {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.language-select:hover {
+  border-color: #ffdd40;
+}
+
+@media screen and (max-width: 768px) {
+  .language-switcher {
+    margin-left: 0;
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  .language-select {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
 .cont {
   display: flex;
   align-items: center;

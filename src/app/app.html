@@ -1,5 +1,5 @@
-<div *ngIf="!(online$ | async)" class="offline-banner">
-    ⚠️ You are offline. Some features may not work.
+<div *ngIf="!(online$ | async)" class="offline-banner" [routerLink]="['/offline']" style="cursor: pointer;">
+    {{ 'OFFLINE.BANNER' | translate }}
 </div>
 <app-top-bar></app-top-bar>
 <router-outlet></router-outlet>

@@ -8,9 +8,9 @@
     <div class="header">
         <div style="display: flex; flex-direction: row; align-items: center; justify-content: center">
             <img class="logo-img" src="./assets/tours.png">
-            <h1>Your favorite countries</h1>
+            <h1>{{ 'FAVORITES.YOUR_FAVORITE_COUNTRIES' | translate }}</h1>
         </div>
-        <p class="subtitle">Discover countries where unforgettable tours await you!</p>
+        <p class="subtitle">{{ 'FAVORITES.DISCOVER_SUBTITLE' | translate }}</p>
     </div>
 
     <div *ngIf="favoriteCountries$ | async as country; else noResult" class="country-list">
@@ -21,13 +21,13 @@
             </button>
             <div class="country-info">
                 <h3>{{ country.name.common }}</h3>
-                <a style="color: black;" [routerLink]="['/tours', country.cca3]">Click to explore tours in {{ country.name.common }}</a>
+                <a style="color: black;" [routerLink]="['/tours', country.cca3]">{{ 'FAVORITES.CLICK_EXPLORE' | translate }} {{ country.name.common }}</a>
             </div>
         </div>
     </div>
 
     <ng-template #noResult>
-        <p class="no-result">😕 No countries found. Try another search.</p>
+        <p class="no-result">{{ 'FAVORITES.NO_COUNTRIES' | translate }}</p>
     </ng-template>
 </div>
 

@@ -8,11 +8,12 @@ import {selectItems, selectItemsError, selectItemsLoading} from "./state/items.s
 import {Store} from "@ngrx/store";
 import {loadItems} from "./state/items.actions";
 import {FavoritesService} from "../services/favorites.service";
+import {TranslateModule} from "@ngx-translate/core";
 
 
 @Component({
   selector: 'app-tours',
-  imports: [CommonModule, FormsModule, RouterLink],
+  imports: [CommonModule, FormsModule, RouterLink, TranslateModule],
   templateUrl: './tours.html',
   standalone: true,
   styleUrl: './tours.css'

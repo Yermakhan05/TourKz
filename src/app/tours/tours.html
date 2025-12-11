@@ -3,22 +3,22 @@
         <div class="spinner"></div>
     </div>
 </div>
-<div *ngIf="error$ | async as error">Country not found</div>
+<div *ngIf="error$ | async as error">{{ 'TOURS.COUNTRY_NOT_FOUND' | translate }}</div>
 
 
 <div class="country-page">
     <div class="header">
         <div style="display: flex; flex-direction: row; align-items: center; justify-content: center">
             <img class="logo-img" src="./assets/tours.png">
-            <h1>Explore Our Destinations</h1>
+            <h1>{{ 'TOURS.EXPLORE_DESTINATIONS' | translate }}</h1>
         </div>
-        <p class="subtitle">Discover countries where unforgettable tours await you!</p>
+        <p class="subtitle">{{ 'TOURS.DISCOVER_SUBTITLE' | translate }}</p>
     </div>
 
     <div class="search-section">
         <input
                 type="search"
-                placeholder="🔍 Search for a country..."
+                [placeholder]="'TOURS.SEARCH_COUNTRY' | translate"
                 [value]="search"
                 (input)="searchResult($event.target.value)"
                 class="search-box"
@@ -36,7 +36,7 @@
                 <div class="country-info">
                     <h3>{{ country.name.common }}</h3>
                     <a style="color: black;" [routerLink]="['/tours', country.cca3]">
-                        Click to explore tours in {{ country.name.common }}
+                        {{ 'TOURS.CLICK_EXPLORE' | translate }} {{ country.name.common }}
                     </a>
                 </div>
             </div>
@@ -49,16 +49,16 @@
                     class="page-btn"
                     (click)="changePage(page - 1)"
                     [disabled]="page === 1">
-                ◀ Prev
+                {{ 'TOURS.PREV' | translate }}
             </button>
 
-            <span class="page-info">Page {{ page }}</span>
+            <span class="page-info">{{ 'TOURS.PAGE' | translate }} {{ page }}</span>
 
             <button
                     class="page-btn"
                     (click)="changePage(page + 1)"
                     [disabled]="page * pageSize >= countryList.length">
-                Next ▶
+                {{ 'TOURS.NEXT' | translate }}
             </button>
 
             <select
@@ -74,6 +74,6 @@
     </div>
 
     <ng-template #noResult>
-        <p class="no-result">😕 No countries found. Try another search.</p>
+        <p class="no-result">{{ 'TOURS.NO_COUNTRIES' | translate }}</p>
     </ng-template>
 </div>
