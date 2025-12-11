@@ -1,2 +1,5 @@
+<div *ngIf="!(online$ | async)" class="offline-banner">
+    ⚠️ You are offline. Some features may not work.
+</div>
 <app-top-bar></app-top-bar>
 <router-outlet></router-outlet>

@@ -5,14 +5,6 @@
 </div>
 <div *ngIf="error$ | async as error">Country not found</div>
 
-<div *ngIf="!(online$ | async)" class="offline-banner">
-    ⚠️ You are offline. Some features may not work.
-</div>
-
-<!-- обычный контент -->
-<ng-container *ngIf="online$ | async">
-    <!-- tours list -->
-</ng-container>
 
 <div class="country-page">
     <div class="header">
@@ -33,16 +25,51 @@
         />
     </div>
 
-    <div *ngIf="countries$ | async as country; else noResult" class="country-list">
-        <div *ngFor="let country of country" class="country-card">
-            <img [src]="country.flags.svg" [alt]="country.name.common" class="flag" />
-            <button (click)="toggle(country.cca3)">
-                {{ (favorites$ | async)?.includes(country.cca3) ? '★' : '☆' }}
-            </button>
-            <div class="country-info">
-                <h3>{{ country.name.common }}</h3>
-                <a style="color: black;" [routerLink]="['/tours', country.cca3]">Click to explore tours in {{ country.name.common }}</a>
+    <div *ngIf="countries$ | async as countryList">
+
+        <div class="country-list">
+            <div *ngFor="let country of pagedCountries" class="country-card">
+                <img [src]="country.flags.svg" [alt]="country.name.common" class="flag" />
+                <button (click)="toggle(country.cca3)">
+                    {{ (favorites$ | async)?.includes(country.cca3) ? '★' : '☆' }}
+                </button>
+                <div class="country-info">
+                    <h3>{{ country.name.common }}</h3>
+                    <a style="color: black;" [routerLink]="['/tours', country.cca3]">
+                        Click to explore tours in {{ country.name.common }}
+                    </a>
+                </div>
             </div>
+        </div>
+
+        <!-- ⭐ Pagination -->
+        <div class="pagination">
+
+            <button
+                    class="page-btn"
+                    (click)="changePage(page - 1)"
+                    [disabled]="page === 1">
+                ◀ Prev
+            </button>
+
+            <span class="page-info">Page {{ page }}</span>
+
+            <button
+                    class="page-btn"
+                    (click)="changePage(page + 1)"
+                    [disabled]="page * pageSize >= countryList.length">
+                Next ▶
+            </button>
+
+            <select
+                    class="page-select"
+                    (change)="changePageSize($event)">
+                <option [selected]="pageSize == 5">8</option>
+                <option [selected]="pageSize == 10">12</option>
+                <option [selected]="pageSize == 20">20</option>
+                <option [selected]="pageSize == 50">50</option>
+            </select>
+
         </div>
     </div>
 

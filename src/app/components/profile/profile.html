@@ -1,16 +1,18 @@
-<div class="profile-container" *ngIf="!loading; else loadingTpl">
+<div class="profile-container">
 
     <div class="profile-card" *ngIf="user$ | async as user">
 
         <div class="avatar">
-            <div class="circle">
-                <img *ngIf="userProfile$ | async as user" [src]="user.avatarUrl" alt="Profile Picture">
+            <div class="circle" *ngIf="profile$ | async as profile">
 
-                <ng-template #noAvatar>
-                    <div class="avatar-placeholder">No Avatar</div>
-                </ng-template>
+                    <img
+                            [src]="profile.avatarBase64 || '../../../../assets/default-avatar.avif'"
+                            class="avatar"
+                    >
+
             </div>
         </div>
+
 
         <h2 class="username">{{ user.email }}</h2>
         <p class="userid">UID: {{ user.uid }}</p>
@@ -26,6 +28,8 @@
     </div>
 
 </div>
+
+
 
 <ng-template #loadingTpl>
     <div class="loading-container">
